@@ -1,1 +1,24 @@
-<p>header works!</p>
+<header class="w-full bg-secondary-900">
+  <div
+    class="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 p-6 sm:gap-6"
+  >
+    <app-avatar size="sm" [name]="nickname()" />
+
+    <div class="flex items-center gap-3">
+      <button
+        class="flex items-center justify-center text-secondary-50 transition-colors duration-150 hover:text-primary-500"
+      >
+        <ng-icon name="heroHome" size="20" /></button
+      ><button
+        class="flex items-center justify-center text-secondary-50 transition-colors duration-150 hover:text-primary-500"
+      >
+        <ng-icon name="heroEye" size="20" /></button
+      ><button
+        class="flex items-center justify-center text-secondary-50 transition-colors duration-150 hover:text-primary-500"
+        (click)="handleLogout()"
+      >
+        <ng-icon name="heroArrowPath" size="20" />
+      </button>
+    </div>
+  </div>
+</header>

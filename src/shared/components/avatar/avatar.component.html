@@ -1,0 +1,45 @@
+<div
+  class="flex items-center justify-center overflow-hidden rounded-full bg-secondary-500"
+  [ngClass]="{
+    'rounded-full': variant === 'circle',
+    'rounded-md': variant === 'square',
+    'size-8': size === 'sm',
+    'size-10': size === 'md',
+    'size-12': size === 'lg'
+  }"
+>
+  <ng-container *ngIf="src || initials; else placeholder">
+    <ng-container *ngIf="src; else userInitials">
+      <img
+        [src]="src || ''"
+        [alt]="alt ?? ''"
+        class="h-full w-full"
+        loading="lazy"
+        (error)="onError()"
+      />
+    </ng-container>
+    <ng-template #userInitials>
+      <span
+        class="font-semibold leading-none text-secondary-50"
+        [ngClass]="{
+          'text-xs': size === 'sm',
+          'text-sm': size === 'md',
+          'text-base': size === 'lg'
+        }"
+        >{{ initials }}</span
+      >
+    </ng-template>
+  </ng-container>
+
+  <ng-template #placeholder>
+    <svg
+      class="h-full w-full text-secondary-50"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z"
+      />
+    </svg>
+  </ng-template>
+</div>

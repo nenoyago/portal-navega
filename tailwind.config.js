@@ -19,11 +19,11 @@ module.exports = {
           900: '#08565b',
         },
         secondary: {
-          50: '#e5e5e5',
-          100: '#d9d9d9',
-          200: '#b3b3b3',
-          300: '#7a7a7a',
-          400: '#5a5a5a',
+          50: '#F6F6F6',
+          100: '#e5e5e5',
+          200: '#d9d9d9',
+          300: '#b3b3b3',
+          400: '#7a7a7a',
           500: '#484848',
           600: '#464646',
           700: '#3c3c3c',
@@ -37,6 +37,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('tailwind-scrollbar')({ nocompatible: true })
+    require('tailwind-scrollbar')({ nocompatible: true }),
   ],
 };

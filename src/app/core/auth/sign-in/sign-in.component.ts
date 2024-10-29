@@ -1,10 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CustomValidator } from 'src/shared/utils/form/form-validators';
 import { validateFormFields } from 'src/shared/utils/form/validate-form-fields';
 
 import pkg from '../../../../../package.json';
+import { SessionService } from '../../services/session.service';
+
+const SIGN_IN_TIMEOUT = 700;
 
 @Component({
   selector: 'app-sign-in',
@@ -15,6 +18,9 @@ export class SignInComponent {
   readonly version = pkg.version;
 
   private router = inject(Router);
+  private session = inject(SessionService);
+
+  protected status = signal<'idle' | 'loading' | 'loaded' | 'error'>('idle');
 
   readonly form = new FormGroup({
     username: new FormControl(
@@ -69,7 +75,17 @@ export class SignInComponent {
     }
   }
 
-  private submit() {
-    this.router.navigate(['/dashboard']);
+  private async submit() {
+    this.status.set('loading');
+
+    await new Promise((resolve) => setTimeout(resolve, SIGN_IN_TIMEOUT));
+
+    this.session.saveSession({
+      username: this.username.value
+    });
+
+    this.router.navigate(['/dashboard']).then(() => {
+      this.status.set('loaded');
+    });
   }
 }

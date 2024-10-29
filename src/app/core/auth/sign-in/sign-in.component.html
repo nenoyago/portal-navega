@@ -46,8 +46,14 @@
   </div>
 
   <div class="flex w-full flex-col items-center justify-center gap-4">
-    <button form="login" mat-flat-button color="primary" class="w-full">
-      Acessar
+    <button
+      form="login"
+      mat-flat-button
+      color="primary"
+      class="w-full text-sm md:max-w-[260px]"
+      [disabled]="status() === 'loading'"
+    >
+      {{ status() === 'loading' ? 'Aguarde...' : 'Acessar' }}
     </button>
 
     <span class="text-center text-sm text-secondary-600"
