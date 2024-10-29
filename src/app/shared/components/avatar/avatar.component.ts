@@ -16,7 +16,7 @@ export class AvatarComponent implements OnInit {
   @Input() size: 'sm' | 'md' | 'lg' = 'md';
   @Input() variant: 'circle' | 'square' = 'circle';
 
-  protected initials = '';
+  public initials = '';
 
   ngOnInit(): void {
     this.initials = this.getInitials();

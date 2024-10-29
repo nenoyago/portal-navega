@@ -1,11 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RequestStatus } from 'src/app/shared/enums/request-status';
-import { CustomValidator } from 'src/app/shared/utils/form/form-validators';
-import { validateFormFields } from 'src/app/shared/utils/form/validate-form-fields';
 
 import pkg from '../../../../../package.json';
+import { RequestStatus } from '../../../shared/enums/request-status';
+import { CustomValidator } from '../../../shared/utils/form/form-validators';
+import { validateFormFields } from '../../../shared/utils/form/validate-form-fields';
 import { SessionService } from '../../services/session.service';
 
 const SIGN_IN_TIMEOUT = 700;
@@ -21,7 +21,7 @@ export class SignInComponent {
   private router = inject(Router);
   private session = inject(SessionService);
 
-  protected status = signal<RequestStatus>(RequestStatus.idle);
+  public status = signal<RequestStatus>(RequestStatus.idle);
 
   readonly form = new FormGroup({
     username: new FormControl(
@@ -84,6 +84,8 @@ export class SignInComponent {
     this.session.saveSession({
       username: this.username.value
     });
+
+    this.status.set(RequestStatus.loaded);
 
     this.router.navigate(['dashboard']).then(() => {
       this.status.set(RequestStatus.loaded);

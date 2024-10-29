@@ -144,6 +144,12 @@ module.exports = {
       },
     },
     {
+      files: ['**/*.spec.ts'], // Configurações específicas para arquivos de teste
+      rules: {
+        'max-lines-per-function': 'off', // Desabilita a regra para arquivos de teste
+      },
+    },
+    {
       files: ['**/*.html'],
       extends: [
         'plugin:@angular-eslint/template/recommended',
