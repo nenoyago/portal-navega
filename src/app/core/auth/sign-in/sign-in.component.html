@@ -1,0 +1,68 @@
+<div
+  class="mx-auto flex h-dvh max-w-[360px] flex-col items-center justify-between px-5 pb-12 pt-16 md:max-h-[680px] md:pb-2"
+>
+  <div class="space-y-8">
+    <picture class="mx-auto flex w-32 items-center justify-center">
+      <img
+        src="assets/logo.svg"
+        alt="Logo da navega"
+        class="h-full w-full object-cover"
+      />
+    </picture>
+
+    <div class="space-y-2">
+      <h1 class="text-center font-semibold text-secondary-600">
+        Boas-vindas ao Portal! <br />
+        Para começar, qual seu email ou CPF?
+      </h1>
+      <p class="text-center text-sm text-secondary-600">
+        Precisamos desta confirmação para dar início ao seu acesso.
+      </p>
+    </div>
+
+    <form id="login" class="w-full" [formGroup]="form" (submit)="onSubmit()">
+      <mat-form-field class="w-full">
+        <mat-label>E-mail ou CPF</mat-label>
+        <input
+          matInput
+          placeholder="Digite seu E-mail ou CPF"
+          formControlName="username"
+        />
+        <mat-error *ngIf="!!usernameError">{{ usernameError }} </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="w-full">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          placeholder="Digite sua senha"
+          type="password"
+          formControlName="password"
+        />
+
+        <mat-error *ngIf="!!passwordError">{{ passwordError }} </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div class="flex w-full flex-col items-center justify-center gap-4">
+    <button form="login" mat-flat-button color="primary" class="w-full">
+      Acessar
+    </button>
+
+    <span class="text-center text-sm text-secondary-600"
+      >Esqueceu a senha?
+      <a
+        class="origin-top border-b border-transparent text-primary-500 transition-all duration-75 ease-in-out hover:border-primary-500"
+        routerLink="/auth"
+        title="Acesse aqui"
+      >
+        Acesse aqui</a
+      >
+    </span>
+
+    <span class="text-xs text-secondary-600" *ngIf="version"
+      >Versão {{ version }}</span
+    >
+  </div>
+</div>

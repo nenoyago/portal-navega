@@ -1,0 +1,98 @@
+@use '@angular/material' as mat;
+
+// Inclua os estilos comuns para o Angular Material
+@include mat.core();
+
+// Defina a paleta de cores primária personalizada
+$custom-primary-palette: mat.define-palette(
+  (
+    50: #e0f7f9,
+    100: #b3ecef,
+    200: #80e0e5,
+    300: #4dd3db,
+    400: #26c8d1,
+    500: #1aaab2,
+    600: #179aa0,
+    700: #13898e,
+    800: #0f797c,
+    900: #08565b,
+    A100: #a5f5ff,
+    A200: #72eaff,
+    A400: #3fe0ff,
+    A700: #26d9ff,
+    contrast: (
+      50: black,
+      100: black,
+      200: black,
+      300: black,
+      400: black,
+      500: white,
+      // Texto em branco para 500
+      600: white,
+      // Texto em branco para 600
+      700: white,
+      // Texto em branco para 700
+      800: white,
+      // Texto em branco para 800
+      900: white,
+      // Texto em branco para 900
+      A100: black,
+      A200: black,
+      A400: black,
+      A700: black
+    )
+  )
+);
+
+// Defina a paleta de cores de acentuação (secundária) personalizada
+$custom-accent-palette: mat.define-palette(
+  (
+    50: #e5e5e5,
+    100: #d9d9d9,
+    200: #b3b3b3,
+    300: #7a7a7a,
+    400: #5a5a5a,
+    500: #484848,
+    600: #464646,
+    700: #3c3c3c,
+    800: #2f2f2f,
+    900: #21232a,
+    A100: #6b6f7a,
+    A200: #51545e,
+    A400: #3a3d47,
+    A700: #2e3037,
+    contrast: (
+      50: black,
+      100: black,
+      200: black,
+      300: white,
+      400: white,
+      500: white,
+      600: white,
+      700: white,
+      800: white,
+      900: white,
+      A100: white,
+      A200: white,
+      A400: white,
+      A700: white
+    )
+  )
+);
+
+// Paleta de alerta
+$custom-warn-palette: mat.define-palette(mat.$red-palette);
+
+// Defina o tema usando as paletas personalizadas
+$custom-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $custom-primary-palette,
+      accent: $custom-accent-palette,
+      warn: $custom-warn-palette
+    )
+  )
+);
+
+// Inclua os temas para todos os componentes
+@include mat.all-component-themes($custom-theme);
