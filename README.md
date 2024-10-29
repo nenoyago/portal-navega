@@ -43,7 +43,7 @@ O projeto também inclui uma página **Not Found** que é exibida quando o usuá
 - [x] Tela de Meu Plano
 - [x] Navegação para Contribuição Mensal
 - [x] Página Not Found
-- [ ] Adicionar testes unitários
+- [x] Adicionar testes unitários
 - [ ] Integrar uma biblioteca de gráficos
 
 ## Ferramentas de Validação e Linting
