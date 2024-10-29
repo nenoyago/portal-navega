@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        plans: 'minmax(7.5rem, 23rem) minmax(23rem, 1fr)'
+      },
       colors: {
         primary: {
           50: '#e0f7f9',
@@ -20,8 +23,8 @@ module.exports = {
         },
         secondary: {
           50: '#F6F6F6',
-          100: '#e5e5e5',
-          200: '#d9d9d9',
+          100: '#d9d9d9',
+          200: '#BDBDBD',
           300: '#b3b3b3',
           400: '#7a7a7a',
           500: '#484848',
@@ -30,6 +33,14 @@ module.exports = {
           800: '#2f2f2f',
           900: '#21232A',
         },
+        custom: {
+          pink: {
+            500: '#E22E6F'
+          },
+          purple: {
+            500: '#594CBE'
+          }
+        }
       },
       fontFamily: {
         'sans': ['Poppins', 'sans-serif'],

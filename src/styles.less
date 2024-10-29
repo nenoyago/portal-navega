@@ -2,31 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './styles/framework//custom-material.less';
+
 html,
 body {
   @apply h-screen bg-white font-sans;
-}
-
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-  background-color: white !important;
-}
-
-.mat-mdc-form-field-focus-overlay {
-  background-color: transparent !important;
-}
-
-.mat-mdc-unelevated-button.mat-primary {
-  --mdc-filled-button-label-text-color: white;
-}
-
-:root {
-  --mdc-filled-text-field-label-text-size: 0.875rem;
-}
-
-mat-form-field {
-  font-size: var(--mdc-filled-text-field-label-text-size) !important;
-}
-
-mat-error {
-  font-size: 0.75rem !important;
 }

@@ -1,0 +1,38 @@
+<div
+  class="flex flex-col rounded-lg border border-secondary-200 p-4 shadow-sm transition-colors duration-150 hover:border-primary-500"
+>
+  <div
+    class="flex items-center justify-between gap-2 border-b border-secondary-200 pb-2"
+  >
+    <div class="flex items-center gap-2 text-secondary-600">
+      <ng-icon name="coins" size="24" />
+      <span class="text-sm"> {{ label }} </span>
+    </div>
+
+    <ng-icon name="heroChevronRight" class="text-primary-500" size="24" />
+  </div>
+
+  <div class="mt-2 space-y-2">
+    <div class="flex items-center justify-between gap-2 text-secondary-600">
+      <h6 class="text-sm">Valor da contribuição</h6>
+      <h6 class="text-sm font-semibold">{{ value || 0 | currency: 'BRL' }}</h6>
+    </div>
+
+    <div
+      *ngIf="percent"
+      class="flex items-center justify-between gap-2 text-secondary-600"
+    >
+      <h6 class="text-sm">Porcentagem do salário</h6>
+      <h6 class="text-sm font-semibold">{{ percent }}%</h6>
+    </div>
+  </div>
+
+  <button
+    mat-button
+    class="mt-2 w-fit text-sm font-bold"
+    color="primary"
+    (click)="onEditContribution()"
+  >
+    Alterar contribuição
+  </button>
+</div>

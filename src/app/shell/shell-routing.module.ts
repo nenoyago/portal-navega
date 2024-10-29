@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ShellComponent } from './shell.component';
-import { DashboardComponent } from '../features/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -12,11 +11,21 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'dashboard'
+        redirectTo: 'my-plans'
       },
       {
         path: 'dashboard',
-        component: DashboardComponent
+        loadComponent: () =>
+          import('../features/dashboard/dashboard.component').then(
+            (m) => m.DashboardComponent
+          )
+      },
+      {
+        path: 'my-plans',
+        loadChildren: () =>
+          import('../features/my-plans/my-plans.routes').then(
+            (m) => m.MyPlansRoutes
+          )
       }
     ]
   }

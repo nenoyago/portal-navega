@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subscription, map, timer } from 'rxjs';
+import { BehaviorSubject, Subscription, map, tap, timer } from 'rxjs';
 import { v4 as uuidv4 } from 'uuid';
 
 import { StorageService } from './storage.service';
@@ -35,6 +35,8 @@ export class SessionService {
       return storagedValue;
     })()
   );
+  private expiredSession = false;
+
   public readonly session$ = this.session.asObservable();
   public readonly isAuthenticated$ = this.session$.pipe(
     map((session) => !!session)
@@ -53,6 +55,10 @@ export class SessionService {
 
   get isAuthenticated(): boolean {
     return !!this.currentSession;
+  }
+
+  get shouldExpireSession(): boolean {
+    return this.expiredSession;
   }
 
   private getNickname(username: string): string {
@@ -92,13 +98,23 @@ export class SessionService {
   }
 
   startSessionExpiryCheck() {
+    if (this.expiredSession) {
+      this.expiredSession = false;
+    }
+
     this.stopSessionExpiryCheck();
 
     if (this.currentSession) {
       const expiresIn = this.currentSession.expiresAt - Date.now();
-      this.sessionExpiryCheck$ = timer(expiresIn).subscribe(() => {
-        this.clearSession();
-      });
+      this.sessionExpiryCheck$ = timer(expiresIn)
+        .pipe(
+          tap(() => {
+            this.expiredSession = true;
+          })
+        )
+        .subscribe(() => {
+          this.clearSession();
+        });
     }
   }
 

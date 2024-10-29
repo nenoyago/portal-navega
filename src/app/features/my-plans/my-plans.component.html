@@ -1,0 +1,25 @@
+<app-header-navbar
+  [title]="isMobile() ? title : 'Meu plano'"
+  [route]="isMobile() ? routeToBack : '/dashboard'"
+/>
+
+<div class="mt-4 grid w-full gap-4 md:grid-cols-plans">
+  <div
+    [ngClass]="{
+      'hidden md:block': !isMainPage,
+      block: isMainPage
+    }"
+  >
+    <app-navigation-menu [menuItems]="menuItems">
+      <app-menu-summary />
+    </app-navigation-menu>
+  </div>
+
+  <div
+    [ngClass]="{
+      'hidden md:block': isMainPage
+    }"
+  >
+    <router-outlet />
+  </div>
+</div>

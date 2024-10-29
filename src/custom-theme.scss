@@ -27,15 +27,10 @@ $custom-primary-palette: mat.define-palette(
       300: black,
       400: black,
       500: white,
-      // Texto em branco para 500
       600: white,
-      // Texto em branco para 600
       700: white,
-      // Texto em branco para 700
       800: white,
-      // Texto em branco para 800
       900: white,
-      // Texto em branco para 900
       A100: black,
       A200: black,
       A400: black,
@@ -44,12 +39,12 @@ $custom-primary-palette: mat.define-palette(
   )
 );
 
-// Defina a paleta de cores de acentuação (secundária) personalizada
+// Defina a paleta de cores de acentuação (secundária) personalizada com variantes
 $custom-accent-palette: mat.define-palette(
   (
     50: #f6f6f6,
-    100: #e5e5e5,
-    200: #d9d9d9,
+    100: #d9d9d9,
+    200: #bdbdbd,
     300: #b3b3b3,
     400: #7a7a7a,
     500: #484848,

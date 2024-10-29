@@ -1,19 +1,29 @@
-<header class="w-full bg-secondary-900">
+<header class="h-20 w-full bg-secondary-900 px-4 py-6 md:px-6">
   <div
-    class="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 p-6 sm:gap-6"
+    class="mx-auto flex w-full max-w-6xl items-center justify-between gap-3 sm:gap-6"
   >
     <app-avatar size="sm" [name]="nickname()" />
 
     <div class="flex items-center gap-3">
       <button
+        title="Dashboard"
         class="flex items-center justify-center text-secondary-50 transition-colors duration-150 hover:text-primary-500"
+        (click)="handleGoToDashboard()"
       >
-        <ng-icon name="heroHome" size="20" /></button
-      ><button
+        <ng-icon name="heroHome" size="20" />
+      </button>
+
+      <button
+        matTooltip="Em breve você poderá visualizar/ocultar os valores de aplicação como um todo."
+        aria-label="Em breve você poderá visualizar/ocultar os valores de aplicação como um todo."
         class="flex items-center justify-center text-secondary-50 transition-colors duration-150 hover:text-primary-500"
+        (click)="handleToggleShowValues()"
       >
-        <ng-icon name="heroEye" size="20" /></button
-      ><button
+        <ng-icon [name]="showValues() ? 'heroEye' : 'heroEyeSlash'" size="20" />
+      </button>
+
+      <button
+        title="Sair"
         class="flex items-center justify-center text-secondary-50 transition-colors duration-150 hover:text-primary-500"
         (click)="handleLogout()"
       >

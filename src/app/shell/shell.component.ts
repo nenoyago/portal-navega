@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
 import { SessionService } from '../core/services/session.service';
@@ -10,6 +11,7 @@ import { SessionService } from '../core/services/session.service';
 })
 export class ShellComponent implements OnInit, OnDestroy {
   private session = inject(SessionService);
+  private snackbar = inject(MatSnackBar);
 
   private sessionSubscription: Subscription | null = null;
 
@@ -18,6 +20,11 @@ export class ShellComponent implements OnInit, OnDestroy {
       (isAuthenticated) => {
         if (isAuthenticated) {
           this.session.startSessionExpiryCheck();
+        } else if (this.session.shouldExpireSession) {
+          this.snackbar.open(
+            'Sua sessão expirou. Por favor, faça login novamente.',
+            'Fechar'
+          );
         }
       }
     );

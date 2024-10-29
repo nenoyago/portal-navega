@@ -5,9 +5,9 @@ import { SafeUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-avatar',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss'],
-  imports: [CommonModule]
+  styleUrls: ['./avatar.component.less']
 })
 export class AvatarComponent implements OnInit {
   @Input() src?: string | SafeUrl | null;

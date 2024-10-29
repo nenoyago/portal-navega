@@ -1,8 +1,9 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomValidator } from 'src/shared/utils/form/form-validators';
-import { validateFormFields } from 'src/shared/utils/form/validate-form-fields';
+import { RequestStatus } from 'src/app/shared/enums/request-status';
+import { CustomValidator } from 'src/app/shared/utils/form/form-validators';
+import { validateFormFields } from 'src/app/shared/utils/form/validate-form-fields';
 
 import pkg from '../../../../../package.json';
 import { SessionService } from '../../services/session.service';
@@ -20,7 +21,7 @@ export class SignInComponent {
   private router = inject(Router);
   private session = inject(SessionService);
 
-  protected status = signal<'idle' | 'loading' | 'loaded' | 'error'>('idle');
+  protected status = signal<RequestStatus>(RequestStatus.idle);
 
   readonly form = new FormGroup({
     username: new FormControl(
@@ -76,7 +77,7 @@ export class SignInComponent {
   }
 
   private async submit() {
-    this.status.set('loading');
+    this.status.set(RequestStatus.loading);
 
     await new Promise((resolve) => setTimeout(resolve, SIGN_IN_TIMEOUT));
 
@@ -84,8 +85,8 @@ export class SignInComponent {
       username: this.username.value
     });
 
-    this.router.navigate(['/dashboard']).then(() => {
-      this.status.set('loaded');
+    this.router.navigate(['dashboard']).then(() => {
+      this.status.set(RequestStatus.loaded);
     });
   }
 }

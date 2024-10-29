@@ -1,0 +1,42 @@
+@baseFontSize: 0.875rem;
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: white !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
+
+.mat-mdc-unelevated-button.mat-primary {
+  --mdc-filled-button-label-text-color: white;
+}
+
+:root {
+  --mdc-filled-text-field-label-text-size: @baseFontSize;
+  --mdc-plain-tooltip-supporting-text-size: @baseFontSize;
+  --mdc-snackbar-supporting-text-size: @baseFontSize;
+  --mdc-plain-tooltip-container-color: #21232a;
+  --mat-mdc-snack-bar-button-color: #f6f6f6;
+  --mdc-snackbar-supporting-text-color: #f6f6f6;
+}
+
+.mat-mdc-tooltip .mdc-tooltip__surface {
+  --mdc-plain-tooltip-container-color: #21232a;
+}
+
+.mat-mdc-snack-bar-container {
+  --mat-snack-bar-button-color: #f6f6f6;
+}
+
+.mdc-snackbar__actions {
+  font-size: var(--mdc-snackbar-supporting-text-size);
+}
+
+mat-form-field {
+  font-size: var(--mdc-filled-text-field-label-text-size) !important;
+}
+
+mat-error {
+  font-size: 0.75rem !important;
+}

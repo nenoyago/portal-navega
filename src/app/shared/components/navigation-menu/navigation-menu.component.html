@@ -1,0 +1,22 @@
+<nav class="flex flex-col p-4">
+  <ng-content></ng-content>
+
+  <ul class="mt-8 divide-y divide-secondary-200">
+    <li *ngFor="let item of menuItems">
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="router-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="group flex items-center justify-between space-x-2 py-4 text-secondary-600 hover:text-primary-500"
+      >
+        <span class="flex items-center gap-2 text-sm">
+          <ng-icon [name]="item.icon" size="32" />
+
+          {{ item.title }}
+        </span>
+
+        <ng-icon name="heroChevronRight" size="20" />
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,21 @@
+<div class="flex flex-col gap-4">
+  <div
+    class="flex items-center justify-center border-b border-secondary-200 pb-4"
+  >
+    <app-chart
+      [headerData]="chartSummary.headerData"
+      [contributionsData]="chartSummary.contributionsData"
+    />
+  </div>
+
+  <div class="flex flex-col gap-4">
+    <app-contribution-card
+      *ngFor="let data of contributionsData"
+      [id]="data.id"
+      [label]="data.label"
+      [value]="data.value"
+      [percent]="data.salaryPercentage"
+      (editContribution)="handleEditContribution($event)"
+    />
+  </div>
+</div>

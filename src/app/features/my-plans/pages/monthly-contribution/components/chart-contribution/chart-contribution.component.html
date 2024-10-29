@@ -1,0 +1,14 @@
+<div class="text-center text-secondary-600">
+  <h6 class="text-sm">
+    <span
+      class="mr-2 inline-block size-2 rounded-full"
+      [ngStyle]="{
+        backgroundColor: color ?? '#000'
+      }"
+    ></span>
+    {{ title }}
+  </h6>
+  <h5 class="text-xl font-semibold text-secondary-600">
+    {{ value ?? 0 | currency: 'BRL' }}
+  </h5>
+</div>

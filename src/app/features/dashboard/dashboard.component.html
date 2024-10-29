@@ -1,1 +1,34 @@
-<p>dashboard works!</p>
+<div class="flex flex-col pt-5">
+  <h2 class="text-lg text-secondary-600 md:text-xl">
+    Seja bem-vindo ao Dashboard.
+  </h2>
+
+  <div
+    class="mt-8 grid gap-4 md:grid-cols-4 lg:gap-6"
+    *ngIf="!!favorites?.length"
+  >
+    <mat-card class="aspect-square h-full" *ngFor="let favorite of favorites">
+      <mat-card-header
+        class="text-lg font-semibold text-secondary-600 md:text-xl"
+      >
+        {{ favorite.title }}
+      </mat-card-header>
+      <mat-card-content class="flex-1">
+        <p class="text-sm text-secondary-500 md:text-base">
+          {{ favorite.description }}
+        </p>
+      </mat-card-content>
+
+      <mat-card-footer class="p-4">
+        <a
+          class="flex w-fit origin-top cursor-pointer items-center justify-end gap-2 border-b border-transparent text-primary-500 transition-all duration-75 ease-in-out hover:border-primary-500"
+          [routerLink]="favorite.route"
+          title="Acessar"
+        >
+          Acessar
+          <ng-icon name="heroArrowRight" />
+        </a>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>
