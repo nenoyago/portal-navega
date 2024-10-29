@@ -2,9 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@import './styles/framework//custom-material.less';
+@import './styles/index.less';
+
+@layer base {
+  input {
+    @apply text-secondary-900 placeholder:text-secondary-200 !important;
+  }
+
+  input,
+  button {
+    @apply font-sans;
+  }
+}
 
 html,
 body {
-  @apply h-screen bg-white font-sans;
+  @apply h-screen bg-white font-sans text-secondary-600;
 }

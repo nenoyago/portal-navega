@@ -1,9 +1,9 @@
 @use '@angular/material' as mat;
 
-// Inclua os estilos comuns para o Angular Material
+// Inclua o núcleo do Angular Material
 @include mat.core();
 
-// Defina a paleta de cores primária personalizada
+// Defina as paletas de cores
 $custom-primary-palette: mat.define-palette(
   (
     50: #e0f7f9,
@@ -78,16 +78,46 @@ $custom-accent-palette: mat.define-palette(
 // Paleta de alerta
 $custom-warn-palette: mat.define-palette(mat.$red-palette);
 
-// Defina o tema usando as paletas personalizadas
-$custom-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $custom-primary-palette,
-      accent: $custom-accent-palette,
-      warn: $custom-warn-palette
+// Exponha as variáveis CSS em formato Tailwind
+:root {
+  // Paleta Primária
+  --primary-50: #{mat.get-color-from-palette($custom-primary-palette, 50)};
+  --primary-100: #{mat.get-color-from-palette($custom-primary-palette, 100)};
+  --primary-200: #{mat.get-color-from-palette($custom-primary-palette, 200)};
+  --primary-300: #{mat.get-color-from-palette($custom-primary-palette, 300)};
+  --primary-400: #{mat.get-color-from-palette($custom-primary-palette, 400)};
+  --primary-500: #{mat.get-color-from-palette($custom-primary-palette, 500)};
+  --primary-600: #{mat.get-color-from-palette($custom-primary-palette, 600)};
+  --primary-700: #{mat.get-color-from-palette($custom-primary-palette, 700)};
+  --primary-800: #{mat.get-color-from-palette($custom-primary-palette, 800)};
+  --primary-900: #{mat.get-color-from-palette($custom-primary-palette, 900)};
+
+  // Paleta Secundária
+  --secondary-50: #{mat.get-color-from-palette($custom-accent-palette, 50)};
+  --secondary-100: #{mat.get-color-from-palette($custom-accent-palette, 100)};
+  --secondary-200: #{mat.get-color-from-palette($custom-accent-palette, 200)};
+  --secondary-300: #{mat.get-color-from-palette($custom-accent-palette, 300)};
+  --secondary-400: #{mat.get-color-from-palette($custom-accent-palette, 400)};
+  --secondary-500: #{mat.get-color-from-palette($custom-accent-palette, 500)};
+  --secondary-600: #{mat.get-color-from-palette($custom-accent-palette, 600)};
+  --secondary-700: #{mat.get-color-from-palette($custom-accent-palette, 700)};
+  --secondary-800: #{mat.get-color-from-palette($custom-accent-palette, 800)};
+  --secondary-900: #{mat.get-color-from-palette($custom-accent-palette, 900)};
+
+  // Exemplo de outras cores
+  --custom-pink-500: #e22e6f;
+  --custom-purple-500: #594cbe;
+}
+
+// Inclua os temas para todos os componentes do Angular Material
+@include mat.all-component-themes(
+  mat.define-light-theme(
+    (
+      color: (
+        primary: $custom-primary-palette,
+        accent: $custom-accent-palette,
+        warn: $custom-warn-palette
+      )
     )
   )
 );
-
-// Inclua os temas para todos os componentes
-@include mat.all-component-themes($custom-theme);

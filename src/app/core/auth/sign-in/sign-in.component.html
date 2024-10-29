@@ -28,7 +28,9 @@
           placeholder="Digite seu E-mail ou CPF"
           formControlName="username"
         />
-        <mat-error *ngIf="!!usernameError">{{ usernameError }} </mat-error>
+        <mat-error *ngIf="!!usernameError">
+          {{ usernameError }}
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="w-full">
@@ -40,7 +42,9 @@
           formControlName="password"
         />
 
-        <mat-error *ngIf="!!passwordError">{{ passwordError }} </mat-error>
+        <mat-error *ngIf="!!passwordError">
+          {{ passwordError }}
+        </mat-error>
       </mat-form-field>
     </form>
   </div>

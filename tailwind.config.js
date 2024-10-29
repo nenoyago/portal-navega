@@ -6,40 +6,40 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        plans: 'minmax(7.5rem, 23rem) minmax(23rem, 1fr)'
+        plans: 'minmax(7.5rem, 25rem) minmax(25rem, 1fr)'
       },
       colors: {
         primary: {
-          50: '#e0f7f9',
-          100: '#b3ecef',
-          200: '#80e0e5',
-          300: '#4dd3db',
-          400: '#26c8d1',
-          500: '#1AAAB2',
-          600: '#179aa0',
-          700: '#13898e',
-          800: '#0f797c',
-          900: '#08565b',
+          50: 'var(--primary-50)',
+          100: 'var(--primary-100)',
+          200: 'var(--primary-200)',
+          300: 'var(--primary-300)',
+          400: 'var(--primary-400)',
+          500: 'var(--primary-500)',
+          600: 'var(--primary-600)',
+          700: 'var(--primary-700)',
+          800: 'var(--primary-800)',
+          900: 'var(--primary-900)',
         },
         secondary: {
-          50: '#F6F6F6',
-          100: '#d9d9d9',
-          200: '#BDBDBD',
-          300: '#b3b3b3',
-          400: '#7a7a7a',
-          500: '#484848',
-          600: '#464646',
-          700: '#3c3c3c',
-          800: '#2f2f2f',
-          900: '#21232A',
+          50: 'var(--secondary-50)',
+          100: 'var(--secondary-100)',
+          200: 'var(--secondary-200)',
+          300: 'var(--secondary-300)',
+          400: 'var(--secondary-400)',
+          500: 'var(--secondary-500)',
+          600: 'var(--secondary-600)',
+          700: 'var(--secondary-700)',
+          800: 'var(--secondary-800)',
+          900: 'var(--secondary-900)',
         },
         custom: {
           pink: {
-            500: '#E22E6F'
+            500: 'var(--custom-pink-500)',
           },
           purple: {
-            500: '#594CBE'
-          }
+            500: 'var(--custom-purple-500)',
+          },
         }
       },
       fontFamily: {
